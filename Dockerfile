@@ -1,9 +1,5 @@
-FROM node:16
+FROM nginx
+COPY public /usr/share/nginx/html
+EXPOSE 80
 
-COPY ./ site/
-
-WORKDIR site/
-
-CMD npm install hexo
-
-ENTRYPOINT ["npx", "hexo", "server -p 80"]
+CMD ["nginx", "-g", "daemon off;"]
