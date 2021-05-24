@@ -1,5 +1,5 @@
 ---
-title: Migrando sessão!
+title: Migrando sessão, do tomcat para o Redis!
 date: 2021-05-09 22:02:24
 tags: devops
 ---
