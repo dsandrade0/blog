@@ -8,7 +8,9 @@ subtitle: 'Site pessoal de Diego Andrade'
 description: 'Site com minhas experiencias pessoais'
 keywords: programming, computer Science
 author: Diego Andrade
-language: pt
+language:
+  - pt-br
+  - en
 timezone: 'America/Maceio'
 
 # URL
