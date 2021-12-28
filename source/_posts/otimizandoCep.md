@@ -28,7 +28,7 @@ Desenvolvendo um sistema para uma corretora de seguros, deparei-me com a seguint
  - Dado um CEP, verificar se o mesmo estaria numa lista de CEPs _"restritos"_, e caso estivesse, o sistema deveria impedir a contratação do seguro.
 
 Os desenvolvedore que criaram a primeira versão dessa solução, resolveu o problema da seguinte maneira:
- - Inseria uma lista de CEPs em formato JSON no banco de dados, e quando precisava verificar o CEP que contratado, carregava-se essa lista do banco de dados em memória, _transformava_ em uma implementação da interface **List** (em Java) e usava o método **_.contains()_** .
+ - Inseria uma lista de CEPs em formato JSON no banco de dados, e quando precisava verificar o CEP que estava sendo contratado, carregava-se essa lista do banco de dados em memória, _transformava_ em uma implementação da interface **List** (em Java) e usava o método **_.contains()_** .
 
 Depois dos testes feitos pela equipe de engenharia, os [QAs](https://gaea.com.br/afinal-o-que-e-quality-assurance/) confirmaram a corretude da solução. Após essas etapas a seguradora faz um teste para verificar a usabilidade da _feature_. Aí começou a dor de cabeça.
 
