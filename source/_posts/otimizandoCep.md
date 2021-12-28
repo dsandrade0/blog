@@ -33,7 +33,7 @@ Os desenvolvedore que criaram a primeira versão dessa solução, resolveram o p
 Depois dos testes feitos pela equipe de engenharia, os [QAs](https://gaea.com.br/afinal-o-que-e-quality-assurance/) confirmaram a corretude da solução. Após essas etapas a seguradora faz um teste para verificar a usabilidade da _feature_. Aí começou a dor de cabeça.
 
 No momento do teste feito pela seguradora, somente o tempo da consulta do banco de dados estavam em torno de 5 segundos, sendo que temos um **_Timeout_** de 3s. **Alguma coisa errada não está certa!!!!**
-Em uma análise mais profunda, verificamos que a seguradora, havia incluido uma lista de CEPs que era uma sequência iniciando pelo cep menor para o CEP maior lexográficamente. Por exemplo, de 48000-000 até 50000-000. Confirmamos essas informações com o pessoal da unidade e de fato foi confirmado.
+Em uma análise mais profunda, verificamos que a seguradora, havia incluido uma lista de CEPs que era uma sequência iniciando pelo cep menor para o CEP maior lexograficamente. Por exemplo, de 48000-000 até 50000-000. Confirmamos essas informações com o pessoal da unidade e de fato foi confirmado.
 
 Vamos fazer uma conta de "padaria":
 Um CEP possui 8 dígitos. Cada dígito possui 8 bits(1 byte). De 48000-000 até 50000-000 temos 2 milhões de CEPs. Logo temos:
@@ -44,10 +44,10 @@ Então temos algo em torno 1 MB para cada milhão de CEPs. E para o nosso espant
 Sendo assim, precisamos resolver esse problema.
 
 # 3 - Solução
-A primeira coisa é alinhar com o pessoal de negócio que essas listas mentivessem esse padrão de utilização do menor CEP para o maior lexograficamente. Sendo assim no exemplo acima de 48000-000 até 50000-000, eu guardaria somente os 2 CEPs no banco de dados. Logo eu unifico o tamanho do campo no banco de dados para 16 bytes.
+A primeira coisa é alinhar com o pessoal de negócio que essas listas mantivessem esse padrão de utilização do menor para o maior CEP lexograficamente. Sendo assim no exemplo acima de 48000-000 até 50000-000, eu guardaria somente os 2 CEPs no banco de dados. Logo eu unifico o tamanho do campo no banco de dados para 16 bytes.
 Logo depois, eu precisei criar um algoritmo para poder tratar alguns casos e identificar se o CEP informado durante a contratação de um seguro, se encontra dentro de alguns desses _ranges_ de CEPs cadastrados no banco de dados. 
 
-A segunda coisa é tratar os casos onde o CEP iniciasse com o número 0. Se tratassemos como um número, o dígito mais significativo (o que fica a esquerda), caso seja 0, não tem valor para o número final. Para resolver esse problema, colocamos o CEP como casas decimais de um número decimal. Assim os 0 localizados à esquerda teriam valor.
+A segunda coisa é tratar os casos onde o CEP iniciasse com o número 0. Se tratássemos como um número, o dígito mais significativo (o que fica a esquerda), caso seja 0, não tem valor para o número final. Para resolver esse problema, colocamos o CEP como casas decimais de um número decimal. Assim os 0 localizados à esquerda teriam valor.
 
 O exemplo abaixo demonstra esse problema na prática:
 
@@ -74,7 +74,7 @@ protected boolean validaIntervaloCep(String CepDe, String CepAte, String CepAval
 ```
 
 ## Conclusão
-Essa solução simples de como lidar com CEPs, trouxe um ganho muito grande de desempenho para a aplicação, sem contar na economia de espaço no banco de dados que foi economizado.
+Essa solução simples de como lidar com CEPs, trouxe um ganho muito grande de desempenho para a aplicação, sem contar na economia de espaço no banco de dados.
 Um pouco de análise do problema e trazendo o algoritmo para um local mais perto do computador (trabalhar com números), faz com que muitos problemas sejam evitados durante esse processo.
 
 ### O código completo da solução está [AQUI](https://github.com/dsandrade0/otimizandoCep)
