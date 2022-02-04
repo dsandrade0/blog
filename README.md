@@ -2,7 +2,6 @@
 Site pessoal
 
 
-```mermaid
 graph LR
     COTAÇÃO --> |chama| MOTOR 
     CONTRATAÇÃO --> |chama| MOTOR 
@@ -11,4 +10,3 @@ graph LR
     MOTOR --> |alertas| COTAÇÃO
     MOTOR --> |ação| CONTRATAÇÃO
     MOTOR --> |ação| ENDOSSO
-```
