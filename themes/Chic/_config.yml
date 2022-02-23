@@ -1,7 +1,7 @@
 # Header
 navname: Diego Andrade Blog
 
-# navigatior items
+# navigatior items/
 nav:
   Artigos/Experiências: /archives
 #  Categorias: /category
@@ -17,12 +17,13 @@ nickname: Diego Andrade
 ### this variable is MarkDown form.
 description: <b>Engenheiro de Software</b> apaixonado pelo que faz, <br/> formado em *Ciência da Computação*, <br/> faixa preta de Judô,
   <br/> pai das pequenas Bia e Eva, <br/> compartilhando  um pouco do conhecimento adquirido ao longo dos anos. <br/>
-  <p> Alguns lugares por onde passei  <br/>
+  <p> Alguns lugares por onde passei <br/>
   [**Secretaria da Fazenda/SE**](https://www.sefaz.se.gov.br) <br/>
   [**SWX/SE**](https://www.facebook.com/swxsoftwares/) <br/>
   [**Secretaria de Segurança pública/SE**](https://www.ssp.se.gov.br) <br/>
   [**Hospital do Coração/SE**](https://hospitaldocoracao-se.com.br) <br/>
-  [**Brasilseg/SP**](https://www.bbseguros.com.br/seguradora/seguros/quem-somos/) </p> <br/><br/>
+  [**Brasilseg/SP**](https://www.bbseguros.com.br/seguradora/seguros/quem-somos/) <br/>
+  [**iFood/BR**](https://ifood.com.br) <br/></p> <br/><br/>
 
 avatar: /image/ava.jpg
 
