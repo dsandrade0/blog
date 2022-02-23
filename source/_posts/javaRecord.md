@@ -97,6 +97,19 @@ Olhando atentamente, veremos que os métodos _Setters_ não foram criados. Isso 
 Perceba também que não aparecem os métodos _hash_, _equals_ e _toString_. Acontece que esses métodos serão entrgues de maneira implícita pela JVM, fazendo com que esses métodos sejam implementados utilizando todos os atributos declarados no Record.
 Não impede que você possa implementar esses métodos manualmente. Caso essa implementação esteja explicita dentro do seu **Record**, ele irá sobscrever o método implícito gerado.
 
+Outro ponto que merece ser mencionado, é a possibilidade de se criar regras específicas dentro dos **Records**. Vou mostrar no exemplo abaixo:
+```java
+public record Pessoa(String nome, Integer idade) {
+    public Pessoa {
+        if (idade < 18) {
+            throw new IllegalArgumentException("A pessoa precisa ser maior de idade");
+        }
+    }
+}
+```
+Perceba que no código acima, podemos inserir restrições que serão avaliadas no momento de criação do objeto, dispensando a necessidade de fazer uso de bibliotecas terceiras como [Hibernate Validator](https://hibernate.org/validator/) para validar os campos.
+
+
 # Utilização de libs terceiras
 Vocês podem está se perguntando: "Mas o Lombok já faz isso pra mim.", e de fato faz. O único problema que precisamos deixar claro, é que o Lombok é uma biblioteca terceira, e como toda lib externa é necessário que se escreva testes unitários para garantir que as funcionalidades utilizadas por essa biblioteca estejam funcionando mesmo se passar por uma atualização.
 Vamos fazer um exemplo para deixar um pouco mais claro. Suponha que a classe Objeto abaixo esteja utilizando o Lombok.
