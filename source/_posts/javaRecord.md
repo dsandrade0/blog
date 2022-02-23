@@ -52,7 +52,7 @@ public class Pessoa {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return nome.equals(pessoa.nome) && idade.equals(pessoa.idade);
+        return nome.equals(pessoa.getNome()) && idade.equals(pessoa.getIdade());
     }
     
     @Override
