@@ -116,7 +116,7 @@ Nesse caso em específico estamos utilizando a anotação **@Getter** e precisam
         assertTrue(Objects.nonNull(metodoGetNome));
     }
 ```
-Isso não precisa ser feito com o **Record** por que ele faz parte da biblioteca padrão disponível no java.lang.
+Isso não precisa ser feito com o **Record** por que ele faz parte da biblioteca padrão disponível no Java.lang.
 
 # E como ele substitui o DTO?
 Aí é que vem a parte mais legal. Na sua função primordial, um DTO (Data Transfer Object) só deveria servir para transportar os dados de um lugar para o outro dentro da aplicação. Sendo assim, não deveriamos ter métodos que alterassem seus valores como fazem os métodos _Setters_. Então o fato de que **Records** são serializáveis, poderia substituir facilmente os DTOs convencionais que costumamos usar dentro das aplicações.
@@ -130,7 +130,7 @@ public record Pessoa(
     Integer idade) {
 }
 ```
-No código acima, podemos validar uma entrada em um **Controller** utilizando o framework [Spring Boot](https://spring.io/quickstart) apenas utilizando a anotação **@Valid** como no exemplo abaixo:
+No código acima, podemos validar uma entrada (Comando) em um **Controller** utilizando o framework [Spring Boot](https://spring.io/quickstart) sendo feita apenas com a anotação **@Valid** (disponibilizada pelo _Hibernate Validator_) como no exemplo abaixo:
 ```java
     @PostMapping("/pessoa")
     public ResponseEntity<?> salvarPessoa(@RequestBody @Valid Pessoa pessoa) {
@@ -140,8 +140,8 @@ No código acima, podemos validar uma entrada em um **Controller** utilizando o 
 Perceba que nesse código acima, estamos recebendo nosso **Record** como o _body_ dessa requisição e ao mesmo tempo estamos retornando ele na resposta da requisição. Mostrando que O [JSON-B e JSON-P](https://cloud.ibm.com/docs/java?topic=java-mp-json&locale=pt-BR) funcionam perfeitamente com os **Records**.
 
 # E tem pontos negativos?
-Como tudo no mundo do desenvolvimento exige _trade-off_, com o **Record** não poderia ser diferente. Uma das coisas que podem ser ditas como uma desvantagem é a algumas menipulações pelas bibliotecas de Serialização e Deserialização como [Jackson](https://github.com/FasterXML/jackson).
-Caso você precise por exemplo ignorar uma propriedade especifica no serialização usando Jackson por exemplo, seu código deveria ficar mais ou menos assim:
+Como tudo no mundo do desenvolvimento exige _trade-off_, com o **Record** não poderia ser diferente. Uma das coisas que podem ser ditas como uma desvantagem são algumas menipulações pelas bibliotecas de Serialização e Deserialização como [Jackson](https://github.com/FasterXML/jackson).
+Caso você precise por exemplo ignorar uma propriedade especifica na serialização usando Jackson por exemplo, seu código deveria ficar mais ou menos assim:
 ```java
 public record Pessoa(
     String nome,
@@ -152,7 +152,7 @@ public record Pessoa(
 Porém, esse mesmo código agora não poderá fazer a função de JSON-B (Deserialização de uma requisição por exemplo). O Jackson entende que deve de fato ignorar essa propriedade. Assim ela não será desserializada para dentro do **Record**.
 
 # Conclusão
-Os **Records** agora são uma realidade a partir do Java 16, porem é recomendado que se for utilizar que usem na versão 17, sendo essa a primeira versão LTS que suporta essa funcionalidade.
+Os **Records** agora são uma realidade a partir do Java 14, porem é recomendado que se for utilizar que usem na versão 17, sendo essa a primeira versão LTS que suporta essa funcionalidade.
 E quanto a substituir os DTOs, bem, isso cabe a cada desenvolvedor, saber o que pode ser melhor para o seu desenvolvimento. Mas esteja certo que essa funcionalidade dá uma nova cara para padrões como COMMAND, que utiliza DTOs específicos para entrada de dados no contexto da aplicação.
 
 ## Sem mais eu vou ficando por aqui **_PEXADAS_**. Até a próxima
