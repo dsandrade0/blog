@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Criando um projeto com Spring Boot e React | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Criando um projeto com Spring Boot e React</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">10 maio 2021&nbsp;&nbsp;20:22:20</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="https://miro.medium.com/max/1228/1*CdMsiQpKpyy1wja9sElnVQ.png" alt="slogan"></p>
+<p>Cada dia mais, a combinação de Spring Boot + ReactJS está dominando o mercado. E como separar meu projeto em backend e frontend, e juntar no build???</p>
+<p>Precisei fazer isso a um tempo atrás e decidi postar a solução. Então, mãos à obra.</p>
+<hr>
+<p>O primeiro passo é ir até <a target="_blank" rel="noopener" href="http://start.spring.io/">http://start.spring.io</a> para gerar nosso projeto Spring Boot. E para efeitos práticos vamos direto ao ponto. Vamos utilizar o Maven para cuidar do nosso build, então selecione o Maven Project. Na sessão das dependências vamos selecionar “web” como na imagem abaixo:<br><img src="https://miro.medium.com/max/1400/1*wnnPxSiF9zqOft5pp4TDSg.png" alt="dependencias"><br>Isso será necessário para configurar nosso projeto. Agora basta clicar em “Generate the project” para baixar o projeto configurado.</p>
+<p>Para faciliar nosso entendimento, crie uma pasta com um nome da sua preferência, no meu caso vou colocar o nome de “Aula”. Descompacte o arquivo do projeto gerado pelo site, dentro da sua pasta e renomei-o para “backend”.</p>
+<p>O próximo passo é criar o nosso projeto ReactJS. Para isso é preciso ter o <a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJS</a> instalado. Depois de instalado o gerenciador de pacote NPM estará instalado, então vamos rodar o seguinte comando em nosso terminal:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install create-react-app -g</span><br></pre></td></tr></table></figure>
+<p>O create-react-app foi criado para faciliar a criação de um projeto ReactJS, então não vamos destrinchar ele, basta usar. É importante notar que o parâmetro “-g” será necessário para que possamos instalar o create-react-app de forma global, e poder usar ele em qualquer diretório do nosso sistema operacional.</p>
+<p>Agora basta agente navegar pelo terminal até a pasta onde está nosso backend, no meu caso na pasta “Aula” e rodar o seguinte comando:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app frontend</span><br></pre></td></tr></table></figure>
+<p>Depois desse comando, nosso diretório ficará mais ou menos assim.<br><img src="https://miro.medium.com/max/1400/1*Sc9veaefbTMYqfeYEQsH6w.png" alt="diretorio"></p>
+<p>Agora abra a IDE java de sua preferência. Como estamos usando Maven, o ideal é que sua IDE tenha suporte a ele. Eu utilizo o IntelliJ, então basta importar o projeto do backend para dentro da sua IDE e vamos começar a brincadeira.</p>
+<p>Basicamente o que temos que fazer é dentro da pasta backend, abra o arquivo pom.xml. Dentro dele está a definição de dependências, informações do seu projeto spring boot e etc. Mas estamos interessados na sessão build, para automatizar e configurar nosso projeto React junto com o spring.</p>
+<p>Vamos adicionar o seguinte plugin abaixo:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">   &lt;groupId&gt;com.github.eirslett&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;frontend-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;1.6&lt;/version&gt;</span><br><span class="line">   &lt;configuration&gt;</span><br><span class="line">       &lt;workingDirectory&gt;../frontend/&lt;/workingDirectory&gt;</span><br><span class="line">       &lt;installDirectory&gt;target&lt;/installDirectory&gt;</span><br><span class="line">   &lt;/configuration&gt;</span><br><span class="line">   &lt;executions&gt;</span><br><span class="line">       &lt;execution&gt;</span><br><span class="line">           &lt;id&gt;install node and npm&lt;/id&gt;</span><br><span class="line">           &lt;goals&gt;</span><br><span class="line">               &lt;goal&gt;install-node-and-npm&lt;/goal&gt;</span><br><span class="line">           &lt;/goals&gt;</span><br><span class="line">           &lt;configuration&gt;</span><br><span class="line">               &lt;nodeVersion&gt;v8.11.3&lt;/nodeVersion&gt;</span><br><span class="line">               &lt;npmVersion&gt;5.6.0&lt;/npmVersion&gt;</span><br><span class="line">           &lt;/configuration&gt;</span><br><span class="line">       &lt;/execution&gt;</span><br><span class="line">       &lt;execution&gt;</span><br><span class="line">           &lt;id&gt;npm install&lt;/id&gt;</span><br><span class="line">           &lt;goals&gt;</span><br><span class="line">               &lt;goal&gt;npm&lt;/goal&gt;</span><br><span class="line">           &lt;/goals&gt;</span><br><span class="line">           &lt;configuration&gt;</span><br><span class="line">               &lt;arguments&gt;install&lt;/arguments&gt;</span><br><span class="line">           &lt;/configuration&gt;</span><br><span class="line">       &lt;/execution&gt;</span><br><span class="line">       &lt;execution&gt;</span><br><span class="line">           &lt;id&gt;npm run build&lt;/id&gt;</span><br><span class="line">           &lt;goals&gt;</span><br><span class="line">               &lt;goal&gt;npm&lt;/goal&gt;</span><br><span class="line">           &lt;/goals&gt;</span><br><span class="line">           &lt;configuration&gt;</span><br><span class="line">               &lt;arguments&gt;run build&lt;/arguments&gt;</span><br><span class="line">           &lt;/configuration&gt;</span><br><span class="line">       &lt;/execution&gt;</span><br><span class="line">   &lt;/executions&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<p>Vamos destrinchar esse plugin? O que esse plugin vai fazer na verdade é se certificar que na máquina onde será feito o build da nossa aplicação, contenha os requisitos necessários para rodar o nosso build. Então caso não tenha o nodeJS nem o NPM, ele irá se encarregar de fazer isso pra você. Nas linhas 16 e 17 você pode especificar uma versão tanto do nodeJS quanto do NPM caso deseje.</p>
+<p>Apos instalar, o plugin também irá rodar o comando “npm build” na nossa pasta frontend, isso garantirá que nosso frontend seja comiplado e minificado segundo as regras do ReactJS.</p>
+<p>Nosso segundo e ultimo plugin, simplesmente colocará o nosso frontend no local correto para que o Spring Boot possa subir junto com seu servidor de aplicação. Segue o plugin.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">  &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;</span><br><span class="line">  &lt;executions&gt;</span><br><span class="line">      &lt;execution&gt;</span><br><span class="line">          &lt;phase&gt;generate-resources&lt;/phase&gt;</span><br><span class="line">          &lt;configuration&gt;</span><br><span class="line">              &lt;target&gt;</span><br><span class="line">                  &lt;copy todir=&quot;$&#123;project.build.directory&#125;/classes/static&quot;&gt;</span><br><span class="line">                      &lt;fileset dir=&quot;$&#123;project.basedir&#125;/../frontend/build&quot; /&gt;</span><br><span class="line">                  &lt;/copy&gt;</span><br><span class="line">              &lt;/target&gt;</span><br><span class="line">          &lt;/configuration&gt;</span><br><span class="line">          &lt;goals&gt;</span><br><span class="line">              &lt;goal&gt;run&lt;/goal&gt;</span><br><span class="line">          &lt;/goals&gt;</span><br><span class="line">      &lt;/execution&gt;</span><br><span class="line">  &lt;/executions&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<p>Esse segundo plugin simplesmente irá pegar a pasta gerada pelo build feito na pasta frontend e irá colocar na pasta static do nosso spring, onde a parte Web precisa está para funcionar corretamente.</p>
+<p>Com esses dois plugins no devido lugar, basta agora a gente ir ao terminal, navegar até a pasta do nosso backend, e rodar o comando:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package</span><br></pre></td></tr></table></figure>
+<p>Esse comando vai se encarregar de chamar nossos alvos do Maven para construir o nosso build de forma correta.</p>
+<p>Ao final desse processo, foi criado uma pasta target dentro do nosso backend, e dentro um Jar contendo o nome do projeto que você colocou no site do spring. Agora para finalizar, basta rodar o segunte comando na pasta target.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar nomeDoSeArquivo.jar</span><br></pre></td></tr></table></figure>
+<p>Vá até o seu navegador e digite <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> e veja seu backend e frontend funcionando perfeitamente.</p>
+<p>Agora você pode perfeitamente ter dois times separados, um trabalhando no frontend e outro trabalhando no backend de forma simultânea e no fim o build se encarrega de colocar todo mundo junto num unico jar.</p>
+<p>Bom pessoal, espero que tenham gostado desse pequeno tutorial. O primeiro de muitos. Nos vemos em breve <strong><em>pexadas</em></strong>.</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/desenvolvimento/"># desenvolvimento</a>
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/react/"># react</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/06/17/optional/">Java Optional. Você está usando ele errado!</a>
+            
+            
+            <a class="next" rel="next" href="/2021/05/09/migrando-sessao/">Migrando sessão, do tomcat para o Redis!</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

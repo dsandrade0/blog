@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Otimizando trabalho com CEPs | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Otimizando trabalho com CEPs</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">27 dezembro 2021&nbsp;&nbsp;23:29:26</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="logo.jpg" alt="logo"></p>
+<h2 id="Fala-pexadas"><a href="#Fala-pexadas" class="headerlink" title="Fala pexadas!!!"></a>Fala <strong><em>pexadas</em></strong>!!!</h2><p>No artigo de hoje, venho trazer um problema que me deparei no natal de 2021 ao trabalhar com CEP. Como um bom estudante de computação, arrumei uma solução que fosse no mínimo <em>“sub-ótima”</em> para o problema. Espero que gostem da solução.</p>
+<p>Vamos separar esse artigo da seguinte forma:<br><strong>1</strong> - Vamos fazer uma pequena introdução sobre como funciona um CEP;<br><strong>2</strong> - Vou fazer uma introdução sobre o problema a ser resolvido e mostrar a primeira solução implementada;<br><strong>3</strong> - Mostrar a solução otimizada.</p>
+<h1 id="1-Introducao"><a href="#1-Introducao" class="headerlink" title="1 - Introdução"></a>1 - Introdução</h1><p>A sigla CEP significa Código de Endereçamento Postal, foi criado em 1972 e consiste em um conjunto composto por 8 números, criado para acelerar o tratamento e encaminhamento de objetos de correspondência que fosse capaz de identificar uma localidade em sua forma mais específica.<br>Cada parte do CEP tem um significado. Da esquerda para a direita, os números indicam a região, sub-região, setor, sub-setor, divisor de sub-setor e identificadores de distribuição. A figura abaixo ilustra essa divisão.</p>
+<p><img src="cepdigitos.jpg" alt="Separação dos dígitos"></p>
+<p>De forma mais genérica, um CEP atualmente tem uma capacidade de representar um logradouro (rua, avenida…) de forma única. Sendo assim nos sistemas atuais que dependam de uma entrega ou de uma identificação do endereço, ele é muito utilizado e talvez seja a única forma de desempenhar essa tarefa.</p>
+<h1 id="2-Problema"><a href="#2-Problema" class="headerlink" title="2 - Problema"></a>2 - Problema</h1><p>Desenvolvendo um sistema para uma corretora de seguros, deparei-me com a seguinte situação. O sistema deveria ser capaz de:</p>
+<ul>
+<li>Dado um CEP, verificar se o mesmo estaria numa lista de CEPs <em>“restritos”</em>, e caso estivesse, o sistema deveria impedir a contratação do seguro.</li>
+</ul>
+<p>Os desenvolvedore que criaram a primeira versão dessa solução, resolveram o problema da seguinte maneira:</p>
+<ul>
+<li>Inseria uma lista de CEPs em formato JSON no banco de dados, e quando precisava verificar o CEP que estava sendo contratado, carregava-se essa lista do banco de dados em memória, <em>transformava</em> em uma implementação da interface <strong>List</strong> (em Java) e usava o método <strong><em>.contains()</em></strong> .</li>
+</ul>
+<p>Depois dos testes feitos pela equipe de engenharia, os <a target="_blank" rel="noopener" href="https://gaea.com.br/afinal-o-que-e-quality-assurance/">QAs</a> confirmaram a corretude da solução. Após essas etapas a seguradora faz um teste para verificar a usabilidade da <em>feature</em>. Aí começou a dor de cabeça.</p>
+<p>No momento do teste feito pela seguradora, somente o tempo da consulta do banco de dados estavam em torno de 5 segundos, sendo que temos um <strong><em>Timeout</em></strong> de 3s. <strong>Alguma coisa errada não está certa!!!!</strong><br>Em uma análise mais profunda, verificamos que a seguradora, havia incluido uma lista de CEPs que era uma sequência iniciando pelo cep menor para o CEP maior lexograficamente. Por exemplo, de 48000-000 até 50000-000. Confirmamos essas informações com o pessoal da unidade e de fato foi confirmado.</p>
+<p>Vamos fazer uma conta de “padaria”:<br>Um CEP possui 8 dígitos. Cada dígito possui 8 bits(1 byte). De 48000-000 até 50000-000 temos 2 milhões de CEPs. Logo temos:<br><code>2.000.000 / 1024 Bytes = 1953 KB =&gt; aproximadamente 2 MB</code><br>Então temos algo em torno 1 MB para cada milhão de CEPs. E para o nosso espanto, a seguradora estava criando algumas listas que geravam quase 6MB de informação em somente 1 campo do banco de dados.<br>Sendo assim, precisamos resolver esse problema.</p>
+<h1 id="3-Solucao"><a href="#3-Solucao" class="headerlink" title="3 - Solução"></a>3 - Solução</h1><p>A primeira coisa é alinhar com o pessoal de negócio que essas listas mantivessem esse padrão de utilização do menor para o maior CEP lexograficamente. Sendo assim no exemplo acima de 48000-000 até 50000-000, eu guardaria somente os 2 CEPs no banco de dados. Logo eu unifico o tamanho do campo no banco de dados para 16 bytes.<br>Logo depois, eu precisei criar um algoritmo para poder tratar alguns casos e identificar se o CEP informado durante a contratação de um seguro, se encontra dentro de alguns desses <em>ranges</em> de CEPs cadastrados no banco de dados. </p>
+<p>A segunda coisa é tratar os casos onde o CEP iniciasse com o número 0. Se tratássemos como um número, o dígito mais significativo (o que fica a esquerda), caso seja 0, não tem valor para o número final. Para resolver esse problema, colocamos o CEP como casas decimais de um número decimal. Assim os 0 localizados à esquerda teriam valor.</p>
+<p>O exemplo abaixo demonstra esse problema na prática:</p>
+<table>
+<thead>
+<tr>
+<th>Valor String</th>
+<th>Valor Numérico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“06000010”</td>
+<td>6000010</td>
+</tr>
+</tbody></table>
+<p>Esse problema foi resolvido, transformando o CEP em número flutuante.</p>
+<table>
+<thead>
+<tr>
+<th>Valor String</th>
+<th>Valor Numérico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“06000010”</td>
+<td>1.06000010</td>
+</tr>
+</tbody></table>
+<p>E para comparar se um CEP se encontrava em meio a um <em>range</em> de CEPs, implementamos o código abaixo:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">validaIntervaloCep</span><span class="params">(String CepDe, String CepAte, String CepAvaliado)</span> </span>&#123;</span><br><span class="line">    BigDecimal numeroDe = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.&quot;</span> + CepDe.replaceAll(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>).replaceAll(<span class="string">&quot;\\.&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line">    BigDecimal numeroAte = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.&quot;</span> + CepAte.replaceAll(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>).replaceAll(<span class="string">&quot;\\.&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line">    BigDecimal numeroAvaliado = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.&quot;</span> + CepAvaliado.replaceAll(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>).replaceAll(<span class="string">&quot;\\.&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> numeroAvaliado.compareTo(numeroDe) &gt;= <span class="number">0</span></span><br><span class="line">            &amp;&amp; numeroAvaliado.compareTo(numeroAte) &lt;= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Essa solução simples de como lidar com CEPs, trouxe um ganho muito grande de desempenho para a aplicação, sem contar na economia de espaço no banco de dados.<br>Um pouco de análise do problema e trazendo o algoritmo para um local mais perto do computador (trabalhar com números), faz com que muitos problemas sejam evitados durante esse processo.</p>
+<h3 id="O-codigo-completo-da-solucao-esta-AQUI"><a href="#O-codigo-completo-da-solucao-esta-AQUI" class="headerlink" title="O código completo da solução está AQUI"></a>O código completo da solução está <a target="_blank" rel="noopener" href="https://github.com/dsandrade0/otimizandoCep">AQUI</a></h3><h4 id="Espero-que-tenham-gostado-e-ate-a-proxima-“PEXADAS“"><a href="#Espero-que-tenham-gostado-e-ate-a-proxima-“PEXADAS“" class="headerlink" title="Espero que tenham gostado e até a próxima  “PEXADAS“"></a>Espero que tenham gostado e até a próxima  “<strong><em>PEXADAS</em></strong>“</h4>
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/desenvolvimento/"># desenvolvimento</a>
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/algoritmo/"># algoritmo</a>
+                    
+                        <a href="/tags/performance/"># performance</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/02/22/javaRecord/">Java Record! Será o fim do DTO?</a>
+            
+            
+            <a class="next" rel="next" href="/2021/07/13/localdatetime/">Datas e hora em Java? Nunca foi tão fácil!</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

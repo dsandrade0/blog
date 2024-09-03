@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Ainda usa Java legado? Você precisa disso! | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Ainda usa Java legado? Você precisa disso!</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">17 julho 2022&nbsp;&nbsp;17:45:25</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>Fala <code>pexadas</code>. Cada dia mais rápida, a Oracle está lançando uma release Java LTS. E com tanta novidade, sempre estamos tentando fazer upgrade das versões das nossas aplicações.<br>Mas o que acontece com as aplicações que usam a versão mais antiga do Java?<br>Decidi escrever esse artigo para dar uma turbinada nas aplicações que ainda usam a versão 7 do Java.</p>
+<h1 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h1><p>Uma coisa que influencia diretamente na performance de aplicações Java é a compilação do Java Bytecode para Assambly. Essa compilação é feita no momento da execução do código pela JVM.<br>Então para entender como utilizar o melhor da JVM em suas aplicações legadas, vamos entender como é feita essa compilação primeiro.</p>
+<h1 id="Compilando-na-JVM"><a href="#Compilando-na-JVM" class="headerlink" title="Compilando na JVM"></a>Compilando na JVM</h1><p>Quando startamos nossa aplicação desenvolvida em Java, a JIT (Just-In-Time Compilation) entra em ação, transformanco o JavaBytecode em Assembly. Essa compilação é feita pelo compilador setado como padrão pela JVM.<br>Basicamente temos 2 compiladores disponíveis para fazer esse trabalho, o <code>C1</code> e o <code>C2</code>. Vamos primeiro entender qual a especialidade de cada compilador. </p>
+<h2 id="C1"><a href="#C1" class="headerlink" title="C1"></a>C1</h2><p>O compilador C1 também é conhecido como <code>client</code>, e sua principal característica é que ele compila o código muito rápido, porém o assembly gerado por ele não é muito eficiente.<br>Ele possui 4 níveis de compilação, são eles:</p>
+<table>
+<thead>
+<tr>
+<th>Nível</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Interpretado</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Compilação simples</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Compilação média</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Compilacão completa</td>
+</tr>
+</tbody></table>
+<p>Como as próprias descrição já dizem, a medida que o nível é aumentado, a compilação é feita de forma mais performática.<br>Esse compilador é extremamente rápido nos primeiros níveis de compilação, esse detalhe é muito importante quando o tempo de bootstrap da aplicação é um requisito que precisa ser observado.</p>
+<h2 id="C2"><a href="#C2" class="headerlink" title="C2"></a>C2</h2><p>O compulador C2 também é conhecido como <code>server</code> e sua função é compilar, da forma mais agressiva possível, utilizando todas as informações disponíveis sobre o código em execução.<br>Esse compilador é mais lento que o <code>C1</code>, porém o assembly produzido por ele é muito rápido.</p>
+<h1 id="Compiladores-na-JVM"><a href="#Compiladores-na-JVM" class="headerlink" title="Compiladores na JVM"></a>Compiladores na JVM</h1><p>Nas versões anteriores ao Java 7, a única coisa que se tinha para fazer com relação a escolha dos compiladores era escolher entre os compiladores <code>C1</code> e <code>C2</code> como parâmetro de execução da sua aplicação. Com isso, era necessário fazer um <em>trade-off</em> para saber quais seriam as vantagens e desvantagens da cada compilador de acordo com a aplicação.</p>
+<p>Porém, nas primeiras versões do Java 7, a flag <code>TieredCompilation</code> foi implantada. Basicamente o que ela oference é a possibilidade de trabalhar com os dois compiladores na mesma aplicação.<br>Mas para isso ser possível é necessário passar o parâmetro <code>+XX:+TieredCompilation</code>.</p>
+<h1 id="Tiered-Compilation"><a href="#Tiered-Compilation" class="headerlink" title="Tiered Compilation"></a>Tiered Compilation</h1><p>Quando o Tiered Compilation está ativado, a aplicação starta sendo compilada com o <code>C1</code>, e a medida que em que os códigos vão sendo chamados repetidamente e atigem determinado limiar, o código que alcançou esse limiar, será compilado pelo <code>C2</code>.<br>Sendo assim, os dois compiladores serão utilizados pela JVM. Agora flags que determinam os limiares dos compiladores podem ser utilizados para determinar quando o <code>C2</code> será utilizado.</p>
+<p>Nas versões <strong>Java 8+</strong>, o <code>Tiered Compilation</code> vem ativado por padrão. Ainda é possível desativá-lo utilizando a flag <code>-XX:-TieredCompilation</code>. Mas vale a pena lembrar que quando essa flag é desligada, somente um dos compiladores será utilizado. Por padrão o compilador a ser utilizado quando esta flag é desligada, depende da plataforma em que a JVM será executada. </p>
+<h1 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h1><p>Para aplicações que utilizam Java 7 e a migração para versões mais novas do Java não podem ser utilizadas, essa flag é fortemente recomendada. Sempre que possível permita que o <code>Tiered Compilation</code> turbine seus códigos.</p>
+<p>Por hoje é tudo <strong><em>PEXADAS</em></strong>!!</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/performance/"># performance</a>
+                    
+                        <a href="/tags/jvm/"># jvm</a>
+                    
+                        <a href="/tags/compilador/"># compilador</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2023/02/07/observabilidade/">Observabilidade com Spring Boot</a>
+            
+            
+            <a class="next" rel="next" href="/2022/02/22/javaRecord/">Java Record! Será o fim do DTO?</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

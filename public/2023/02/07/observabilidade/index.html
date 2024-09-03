@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Observabilidade com Spring Boot | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Observabilidade com Spring Boot</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">7 fevereiro 2023&nbsp;&nbsp;20:27:13</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="observabilidade.jpeg" alt="Observabilidade"></p>
+<h2 id="Fala-pexadas-Tudo-bom-com-voces"><a href="#Fala-pexadas-Tudo-bom-com-voces" class="headerlink" title="Fala pexadas!! Tudo bom com vocês?"></a>Fala <strong><em>pexadas</em></strong>!! Tudo bom com vocês?</h2><h1 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h1><p><strong>Observabilidade</strong> é a capacidade de medir e monitorar os estados de um sistema. É uma medida de quanto de um sistema pode ser observado e medido para obter informações sobre seu estado atual. Quanto maior a observabilidade, mais informações sobre o sistema estarão disponíveis para serem usadas para fins de tomada de decisão. Ela também é importante para o entendimento do comportamento de um sistema em tempo real.</p>
+<p>Nos dias atuais, é muito importante implementar a observabilidade para sistemas de computação, como aplicações corporativas e serviços de nuvem. Com a observabilidade, os administradores do sistema podem monitorar e gerenciar os sistemas em tempo real, acompanhando o desempenho, a disponibilidade e o uso de recursos. Isso permite que os problemas sejam detectados e resolvidos rapidamente, antes que eles causem impacto significativo.</p>
+<h1 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h1><p>Nesta mini-série, iremos abordar como implementar e obter métricas nos seus sistemas usando <strong>Spring Boot</strong>, <strong>Prometheus</strong> e <strong>Grafana</strong>. Vamos dividir em 3 passos para separar os entendimentos necessários para a realização dessa tarefa.</p>
+<p><strong>1.  Como preparar seu sistema com Spring Boot</strong><br><strong>2.  Como configurar o Prometheus e o Grafana</strong><br><strong>3.  Como criar métricas customizadas para seu sistema.</strong></p>
+<p>Explicando essa jornada um pouco melhor, iremos fazer o seguinte.<br><img src="visao.png" alt="Serviço enviando informações para o Prometheus e Prometheus para o Grafana"><br>O Grafana será responsável por exibir as métricas que serão coletadas pelo Prometheus, que busca as métricas no serviço. Mas na construção da solução iremos fazer de trás para frente. Primeiro expondo as métricas no serviço, depois configurando o Prometheus para buscar essas métricas, e por fim, exibindo no Grafana por paineis e dashboards. </p>
+<h1 id="Pre-Requisitos"><a href="#Pre-Requisitos" class="headerlink" title="Pré-Requisitos"></a>Pré-Requisitos</h1><p>Nesse artigo, vamos precisar ter um entendimento mínimo sobre Docker e Spring Boot.</p>
+<h1 id="1-Preparando-seu-sistema"><a href="#1-Preparando-seu-sistema" class="headerlink" title="1 - Preparando seu sistema"></a>1 - Preparando seu sistema</h1><p>Para esse caso, iremos utilizar um sistema co Spring Boot 3 que já está implementado, utilizando a linguagem Kotlin. Não se preocupe com a linguagem, porque vamos demonstrar como fazer os códigos com Java também.</p>
+<p>Para o primeiro passo, precisamos entender o que precisamos fazer para preparar o nosso sistema para expor as métricas do nosso sistema. E para iniciar, precisamos adicionar uma biblioteca no nosso sistema, que é capaz de fazer as configurações iniciais sem muitas dificuldades. Estamos falando do biblioteca do <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.actuator">Actuator</a>.<br>Para incluir a biblioteca do Actuator, basta inserir o código abaixo:</p>
+<p>para Maven:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artefactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artefactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>ou para Gradle:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">&quot;org.springframework.boot:spring-boot-starter-actuator&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Essa <strong>lib</strong> permite que seja disponibilizado uma série de <em>beans</em> pré-configurados para expor as métricas do nosso sistema.</p>
+<p>Agora, precisamos expor os endpoints dessa lib, fazendo com que as configurações existentes na biblioteca sejam corretamente configurados. Para esse trabalho vamos alterar o arquivo localizado em src/main/resources com o nome de <strong>application.yml</strong> ou <strong>application.properties</strong>.</p>
+<p>yaml:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">      <span class="attr">exposure:</span></span><br><span class="line">        <span class="attr">include:</span> <span class="string">health,metrics,prometheus</span></span><br><span class="line">  <span class="attr">prometheus:</span></span><br><span class="line">    <span class="attr">metrics:</span></span><br><span class="line">      <span class="attr">export:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>properties:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">health,metrics,prometheus</span></span><br><span class="line"><span class="meta">management.endpoint.prometheus.enabled</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">management.metrics.export.prometheus.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p>As linhas acima ativam as configurações que farão a configuração de toda a parte de métricas do Spring Boot para nós. Com essas linhas de configuração já é possível acessar o endpoint de métricas do seu sistema acessando <a target="_blank" rel="noopener" href="http://localhost:8080/actuator/prometheus">http://localhost:8080/actuator/prometheus</a><br>Ao acessar esse caminho será possível ver algo parecido com isso:</p>
+<p><img src="prometheus_metricas.png" alt="Prometheus Metricas"></p>
+<p>A primeira etapa do nosso trabalho está concluída. Dessa forma as métricas do nosso serviço estão expostas e estão prontas para serem consumidas pelo Prometheus e por fim visualizadas pelo Grafana.</p>
+<h1 id="2-Configurando-Prometheus-e-Grafana"><a href="#2-Configurando-Prometheus-e-Grafana" class="headerlink" title="2 - Configurando Prometheus e Grafana"></a>2 - Configurando Prometheus e Grafana</h1><p>Para a configuração do Prometheus e do Grafana, iremos analisar o arquivo docker-compose.yaml criado para subir essas aplicações para nós. Vamos destrinchar o arquivo passo a passo.</p>
+<p>docker-compose.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.3&#x27;</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">interna:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">prometheus_data:</span></span><br><span class="line">  <span class="attr">grafana_data:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">prometheus:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">prom/prometheus:latest</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./prometheus.yml:/etc/prometheus/prometheus.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">prometheus_data:/prometheus</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">interna</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9099</span><span class="string">:9090</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">grafana:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">grafana/grafana:latest</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">grafana_data:/var/lib/grafana</span> <span class="string">grafana/grafana-enterprise</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3000</span><span class="string">:3000</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">interna</span></span><br></pre></td></tr></table></figure>
+
+<p>O arquivo acima, está dividido em 4 grandes blocos: Definição da versão do arquivo, redes, volumes e serviços.<br>Na linha <code>1</code>, definimos a versão do docker-compose que iremos utilizar para escrever o arquivo.<br>Nas linhas <code>2</code> a <code>4</code>, estamos definindo uma rede dentro do docker nomeada de <em>interna</em>, e que utilizará o driver <strong>bridge</strong>.<br>Nas linhas <code>5</code> a <code>7</code>, estamos definindo um volume para o prometheus e para o grafana, para que os dados não sejam perdidos caso os containers precisem ser reiniciados.</p>
+<p>Agora vem o bloco de serviços. E é aqui que precisamos nos concentrar.<br>O primeiro serviço definido foi o do prometheus. Ele utiliza uma imagem que vem direto do <a target="_blank" rel="noopener" href="http://hub.docker.com/">http://hub.docker.com/</a> para funcionar, e definimos os volumes que serão utilizados por esse serviço. O arquivo definido por prometheus.yml está disposto abaixo.</p>
+<p>prometheus.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">scrape_interval:</span> <span class="string">5s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&quot;servico-job&quot;</span></span><br><span class="line">    <span class="attr">metrics_path:</span> <span class="string">&quot;/actuator/prometheus&quot;</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&quot;ip-da-sua-maquina:8080&quot;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">application:</span> <span class="string">&quot;servico-backend&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Depois desses arquivos criados, basta navegar até a pasta onde estão os arquivos e rodar o comando:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker-compose up -d</span></span><br></pre></td></tr></table></figure>
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/devops/"># devops</a>
+                    
+                        <a href="/tags/observabilidade/"># observabilidade</a>
+                    
+                        <a href="/tags/spring/"># spring</a>
+                    
+                        <a href="/tags/prometheus/"># prometheus</a>
+                    
+                        <a href="/tags/grafana/"># grafana</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/07/17/tieredCompilation/">Ainda usa Java legado? Você precisa disso!</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

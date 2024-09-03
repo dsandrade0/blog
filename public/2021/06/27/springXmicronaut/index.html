@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Spring Boot ou Micronaut? Qual é o melhor? | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Spring Boot ou Micronaut? Qual é o melhor?</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">27 junho 2021&nbsp;&nbsp;10:02:43</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="Fala-pexadas-Tudo-bom-com-voces"><a href="#Fala-pexadas-Tudo-bom-com-voces" class="headerlink" title="Fala pexadas!! Tudo bom com vocês?"></a>Fala <strong><em>pexadas</em></strong>!! Tudo bom com vocês?</h3><p>Depois que entramos de vez na era dos microserviços, várias ferramentas utilizadas no passado, precisaram ser atualizadas para atender esse novo momento. E a ferramenta principal foi o <em>framework</em> utilizado. Que tal uma pequena introdução?</p>
+<h2 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h2><p>Podemos definir um <em>framework</em> em desenvolvimento de software, como sendo um conjunto de código que tem como objetivo facilitar a criação e manutenção de um software, trazendo consigo vários códigos comuns e genéricos.</p>
+<p>Em um passado não muito distante, no desenvolvimento de aplicações web utilizando Java, usáva-mos frameworks como <a target="_blank" rel="noopener" href="http://struts.apache.org/">Struts</a>, <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html">JSF</a>, <a target="_blank" rel="noopener" href="http://vraptor.caelum.com.br/">VRaptor</a>, <a target="_blank" rel="noopener" href="http://www.springsource.org/">Spring MVC</a> e por ai vai.<br>Esses frameworks possuem várias funções e abstrações de todos os níveis e tamanhos, e para serem genéricos o suficiente, precisavam ter muitas abstrações que quase sempre não eram utilizadas.</p>
+<p>Para citar alguns exemplos, em alguns lugares que trabalhei no passado, o simples fato de dar um <em>start</em> no servidor para subir a aplicação no meu computador, demorava cerca de 5 minutos para estar pronto para o uso. Como era um programador júnior na época, uma simples alteração exigia que eu fizesse de 6 a 8 <em>starts</em> no servidor de aplicação, o que me tomava algo em torno de 40 minutos aguardando o serviço estar pronto.<br>Isso ocorria porque a empresa utilizava um framework robusto para fazer todas as tarefas da empresa em uma única aplicação.</p>
+<p>Então chegamos a era dos microserviços. A definição de microserviços pode ser feita como <strong>uma minúscula porção do software que trabalha de maneira independente, focada em uma pequena e única responsabilidade.</strong><br>Sendo assim, os <em>frameworks</em> se especializaram, e um software de vendas por exemplo, que antes era feito em um único software, foi quebrado em pequenas responsabilidades como: A parte do estoque, a parte da venda, a parte do cliente. E cada parte, seria um software separado dos demais. <em>(Claro que uma divisão como essa pode render uma discussão imensa, mas serve como um exemplo)</em></p>
+<p>Então chegamos aos frameworks especializados. O famosos e gigante <strong>Spring MVC</strong>, quebrou o seu gigante framework em uma parte <em>core</em>, e as outras partes que podem não chegar a ser utilizadas, agora são opcionais, chamando esse novo framework de <strong>Spring Boot</strong>.</p>
+<h3 id="Mas-e-ai-Por-que-fazer-essa-analise"><a href="#Mas-e-ai-Por-que-fazer-essa-analise" class="headerlink" title="Mas é aí? Por que fazer essa análise?"></a>Mas é aí? Por que fazer essa análise?</h3><p>O primeiro detalhe é que o <a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">Spring Boot</a> está sendo muito utilizados nos dias atuais, pela fama que o seu framework pai já possuia na comunidade. Sendo assim a primeira opção para essa análise. Segundo a pesquisa da <a target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/devecosystem-2020/java/">JetBrains 2020</a> o framework mais utilizado é o Spring Boot como na figura abaixo:</p>
+<p><img src="survey.png" alt="JetBrains Survey 2020"></p>
+<p>Um detalhe extremamente simples, é que o <a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">Spring Boot</a>, foi criado a partir de um framework já existente, com fama de um super framework preparado para qualquer coisa, o que pode impactar na performance e na quantidade de coisas desnecessárias que podemos não usar. Sendo assim, decidi comparar com um framework que já nasceu nessa era dos microserviços e foi criado com esse propósito, o <a target="_blank" rel="noopener" href="https://micronaut.io/">Micronaut</a>.<br>A escolha foi totalmente aleatória, poderia ter escolhido <a target="_blank" rel="noopener" href="https://helidon.io/#/">Helidon</a>, <a target="_blank" rel="noopener" href="https://helidon.io/#/">Quarkus</a>, <a target="_blank" rel="noopener" href="https://sparkjava.com/">Spark</a>, dentre outros.</p>
+<h2 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h2><h3 id="Definicao-dos-testes"><a href="#Definicao-dos-testes" class="headerlink" title="Definição dos testes"></a>Definição dos testes</h3><p>Vamos fazer o seguinte teste. Primeiro vamos gerar 2 aplicações somente com as funções básicas de cada framework como na tabela a seguir:<br>As versões dos frameworks serão: Spring Boot v2.5.2 e Micronaut v2.5.7</p>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Dependências</th>
+<th>Site</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Spring Boot</strong></td>
+<td>Spring Web, Spring Data JPA, PostgreSQL Driver, Lombok</td>
+<td><a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io</a></td>
+</tr>
+<tr>
+<td><strong>Micronaut</strong></td>
+<td>data-jpa, postgres, lombok</td>
+<td><a target="_blank" rel="noopener" href="https://micronaut.io/launch">https://micronaut.io/launch</a></td>
+</tr>
+</tbody></table>
+<p>Utilizaremos JDK versão 11.0.7+8-LTS com HotSpot 64-Bit Tiered Compilers, em uma máquina rodando Mac OS X 64 bits, com 8GB de memória RAM, processador Intel com 4 processadores. Vamos também utilizar um banco de dados PostgreSQL alocado em um servidor na nuvem.</p>
+<h3 id="Passo-1"><a href="#Passo-1" class="headerlink" title="Passo 1"></a>Passo 1</h3><p>Vamos utilizar o hibernate nas 2 aplicações para acessar uma tabela denominada Jogadores, que serão mapeadas apenas as colunas <em>id</em> e <em>nome</em> dessa tabela. As estruturas dos projetos estão definidas nas imagens abaixo:</p>
+<table>
+<thead>
+<tr>
+<th>Spring Boot</th>
+<th>Micronaut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="springEstrutura.png" alt="Spring"></td>
+<td><img src="micronautEstrutura.png" alt="Micronaut"></td>
+</tr>
+</tbody></table>
+<p>Como podemos ver a mesma estrutura é aplicada aos dois projetos, inclusive compartilhando o mesmo código dos pacotes <em>domain</em> e <em>repository</em> e no resource cada projeto apresenta suas diferenças para implementações como vou mostrar abaixo:</p>
+<table>
+<thead>
+<tr>
+<th>Spring Boot</th>
+<th>Micronaut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="springResource.png" alt="Spring"></td>
+<td><img src="micronautResource.png" alt="Micronaut"></td>
+</tr>
+</tbody></table>
+<h3 id="Inicio-dos-testes"><a href="#Inicio-dos-testes" class="headerlink" title="Inicio dos testes"></a>Inicio dos testes</h3><h4 id="1º-teste-Inicializacao-livre"><a href="#1º-teste-Inicializacao-livre" class="headerlink" title="1º teste - Inicialização livre"></a>1º teste - Inicialização livre</h4><p>Faremos 3 <em>starts</em> para analisar o uso de memória livre que cada framework faz no <em>warmup</em> (inicialização) da aplicação sem fazer nenhuma chamada para a aplicação. Vamos aos resultados</p>
+<table>
+<thead>
+<tr>
+<th>Projeto</th>
+<th>1º start</th>
+<th>2º start</th>
+<th>3º start</th>
+<th>Média de classes carregadas</th>
+<th>Tempo médio de inicialização (segundos)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>98MB</td>
+<td>99.6MB</td>
+<td>99.5MB</td>
+<td>10.768</td>
+<td>11,6 s</td>
+</tr>
+<tr>
+<td>Micronaut</td>
+<td>84MB</td>
+<td>65MB</td>
+<td>99MB</td>
+<td>10.050</td>
+<td>10,3 s</td>
+</tr>
+</tbody></table>
+<p>Como podemos ver na tabela acima, se as memórias no momento da inicialização são bem parecidas, embora a quantidade de classes carregadas pelo Spring Boot seja um pouco maior. Isso se reflete também no tempo de inicialização, dando uma pequena vantagem para o Micronaut.<br>Temos que lembrar que por padrão, o Spring Boot opera com o Tomcat como servidor de aplicação e o Micronaut com o Netty. Ambos podem alterar as configurações padrão, mas não foi o caso no nosso teste em questão.</p>
+<h4 id="2º-teste-Minimo-de-memoria"><a href="#2º-teste-Minimo-de-memoria" class="headerlink" title="2º teste - Mínimo de memória"></a>2º teste - Mínimo de memória</h4><p>Nesse segundo teste, vamos saber qual o menor valor de memória que a aplicação precisa para ficar estável para receber requisições. Ainda assim não faremos chamadas para a aplicação.</p>
+<table>
+<thead>
+<tr>
+<th>framework</th>
+<th>10MB</th>
+<th>12MB</th>
+<th>13MB</th>
+<th>15MB</th>
+<th>19MB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td><strong>Não</strong></td>
+<td><strong>Não</strong></td>
+<td><strong>Não</strong></td>
+<td><strong>Não</strong></td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Micronaut</td>
+<td><strong>Não</strong></td>
+<td><strong>Não</strong></td>
+<td><strong>OK</strong></td>
+<td><strong>OK</strong></td>
+<td><strong>OK</strong></td>
+</tr>
+</tbody></table>
+<p>Como podemos ver acima, somente para fazer o arranque, o Spring Boot necessita de 46% a mais de memória que o Micronaut. Uma possível explicação para isso é o fato da quantidade de classes a mais que ele precisa inicializar na sua inicialização.</p>
+<h4 id="3º-teste-Requisicao-com-minimo-de-memoria"><a href="#3º-teste-Requisicao-com-minimo-de-memoria" class="headerlink" title="3º teste - Requisição com mínimo de memória"></a>3º teste - Requisição com mínimo de memória</h4><p>Agora vamos tentar solicitar a lista de jogadores para as duas aplicações utilizando o mínimo de memória. A tabela contém 161 registros.</p>
+<table>
+<thead>
+<tr>
+<th>framework</th>
+<th>Tempo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>24.853ms</td>
+</tr>
+<tr>
+<td>Micronaut</td>
+<td><strong>Não</strong></td>
+</tr>
+</tbody></table>
+<p>Com o mínimo de memória, o Micronaut não conseguiu trazer os dados da tabela. Então colocamos os mesmos 19MB da aplicaçào com Spring Boot para fazer um novo teste, e ele conseguiu trazer a lista em <strong>3.352ms</strong>.</p>
+<h4 id="4º-teste-32MB-fazer-um-teste-de-carga"><a href="#4º-teste-32MB-fazer-um-teste-de-carga" class="headerlink" title="4º teste - 32MB fazer um teste de carga"></a>4º teste - 32MB fazer um teste de carga</h4><p>Com esse teste, vamos estabilizar as duas aplicações com 32MB de memória na JVM (-Xmx) e vamos descobrir quantos acessos simultâneos cada aplicação aguenta receber.</p>
+<table>
+<thead>
+<tr>
+<th>framework</th>
+<th>Conexões simultaneas</th>
+<th>Tempo médio de resposta (ms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>109</td>
+<td>6102</td>
+</tr>
+<tr>
+<td>Micronaut</td>
+<td>249</td>
+<td>14244</td>
+</tr>
+</tbody></table>
+<p>Algumas coisas precisam ficar claras. O teste foi feito utilizando o <a target="_blank" rel="noopener" href="https://httpd.apache.org/docs/2.4/programs/ab.html">Apache Benchmark</a> e o comando utilizado foi:<br><code>ab -n 1000 -c n http://localhost:8080/jogador</code> onde ‘n’ é o numero de conexões simultâneas.<br>Outra coisa que precisamos destacar é o fato de que as duas aplicações estão utilizando o <a target="_blank" rel="noopener" href="https://hibernate.org/">Hibernate</a> como camada intermediária com o banco de dados. Isso faz com que a resposta do banco de dados para a aplicação utilize suas camadas de cache (C1 e C2) para que a resposta seja dada no menor tempo possível. A média de tempo de resposta do Hibernate foi em torno de <strong>450ms</strong> para cada request.</p>
+<p>Sendo assim, fazendo uma rápida análise na tabela acima, que temos que fazer um <em>trade-off</em> sobre o que queremos para a nossa aplicação. O tempo de resposta foi <strong>58%</strong> mais rápido no Spring Boot, mas em compensação, o Micronaut recebe <strong>128%</strong> a mais de requisições. Então, os requisitos não funcionais do sistema precisam ser levados em consideração para uma escolha do framework nesse sentido, ou até mesmo para dimensionar a quantidade de recurso que será utilizado na aplicação.</p>
+<h4 id="5º-teste-Empacotamento"><a href="#5º-teste-Empacotamento" class="headerlink" title="5º teste - Empacotamento"></a>5º teste - Empacotamento</h4><p>Como último teste, vamos fazer o empacotamento das aplicações utilizando o maven e gerando o que chamamos de <em>fat jar</em>. Um jar executável com todas as dependências inclusas. Iremos analisar o tempo para a geração do <em>jar</em> e o seu tamanho final.</p>
+<table>
+<thead>
+<tr>
+<th>framework</th>
+<th>tempo médio (s)</th>
+<th>tamanho</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>5.06</td>
+<td>36MB</td>
+</tr>
+<tr>
+<td>Micronaut</td>
+<td>9.56</td>
+<td>29MB</td>
+</tr>
+</tbody></table>
+<p>Nesse teste, rodamos o comando <code>mvn clean package</code> para fazer o empacotamento da aplicação. O Spring Boot teve um tempo de empacotamento menor, mas gerou um arquivo maior se comparado com o Micronaut. Talvez isso seja explicado pelo algoritmo de compressão utilizado pelo Micronaut que, para ter uma maior compressão perde um pouco mais de tempo no empacotamento.<br>O que ainda não consideramos é que essa aplicação é extremamente simples. A medida que a aplicação aumenta a quantidade de dependências, esses tempos e o tamanho do arquivo gerado no final, tende a aumentar.</p>
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Então <strong><em>pexadas</em></strong>, esses testes trazem uma importância muitas vezes ocultas nos requisitos não funcionais de um sistema. Ele pode indicar não somente o framework que vc deve utilizar para atingir suas métricas, mas como também o tipo de banco de dados, a quantidade de recurso utilizado na aplicação e até mesmo o tipo de <em>tunning</em> a ser utilizado pela sua aplicação.</p>
+<p>Espero que tenham gostado desse artigo e até a próxima <strong><em>PEXADAS</em></strong>.</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/frameworks/"># frameworks</a>
+                    
+                        <a href="/tags/benchmark/"># benchmark</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/07/04/springPathTraversal/">Security flaw on Spring Boot upload.</a>
+            
+            
+            <a class="next" rel="next" href="/2021/06/17/optional/">Java Optional. Você está usando ele errado!</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

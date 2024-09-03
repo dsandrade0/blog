@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Nginx ou Apache?? | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Nginx ou Apache??</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">25 dezembro 2016&nbsp;&nbsp;2:06:52</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>Quando vamos trabalhar com sistemas web, temos algumas preocupações a serem levadas em consideração. Uma delas é qual servidor web utilizar? E de primeira me vinham dois servidores, Apache e Nginx.</p>
+<p>Durante algum tempo me fiz essa pergunta. Qual o melhor servidor, Nginx ou Apache?<br>Primeiro vamos deixar uma coisa bem clara. Qualquer um destes servidores certamente irá servir para seu projeto sem sombras de dúvidas. Porém alguns detalhes desses servidores web, precisam ser entendidos antes de iniciar o seu projeto.</p>
+<p>Aqui vamos mostrar alguns pontos positivos que podem ser utilizados por você para decidir qual servidor irá utilizar em seu projeto, seja ele pessoal ou profissional.</p>
+<h1 id="1-Instalacao"><a href="#1-Instalacao" class="headerlink" title="1 - Instalação"></a>1 - Instalação</h1><p>O primeiro passo é a instalação. Não queremos perder muito tempo para poder instalar e configurar um projeto seja ele em qualquer plataforma de programação back-end.</p>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><p>Na maioria dos sistemas operacionais do pinguin (Linux), o Apache já está disponível de forma nativa, bastando apenas startar e utilizar.</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>Apesar de não aparecer como nativo na maioria das distribuições Linux, o Nginx não é de difícil instalação. Basicamente se resume em:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#para distribuições  Debian | Ubuntu ...</span></span><br><span class="line">sudo apt-get install nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">#para distribuições  Redhat | CentOS ...</span></span><br><span class="line">sudo yum install nginx</span><br></pre></td></tr></table></figure>
+<h1 id="2-Compressao-de-arquivos"><a href="#2-Compressao-de-arquivos" class="headerlink" title="2 - Compressão de arquivos"></a>2 - Compressão de arquivos</h1><p>Uma coisa bem interessante nos servidores web atuais, é a capacidade de comprimir alguns dados antes de enviar do servidor para o cliente. Isso faz com que o carregamento aconteça de forma mais rápida. Como alguns dados trafegam na rede compactados, eles passam a ter um tamanho menor</p>
+<p>Ambos os servidores web cumprem bem esse requisito. E possuem uma forma bem fácil de dizer que queremos ativar essa função.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configuração no Apache</span></span><br><span class="line">AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configuração no Nginx</span></span><br><span class="line">server &#123;</span><br><span class="line">	gzip on;</span><br><span class="line">	gzip_types      text/plain application/xml text/javascript text/css text/plain text/html;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Velocidade"><a href="#3-Velocidade" class="headerlink" title="3 - Velocidade"></a>3 - Velocidade</h1><p>Neste tópico as coisas começam a esquentar. Embora o Apache tenha muito mais tempo de mercado, o <strong>Nginx</strong> leva muita vantagem nesse quesito. Isso só é possível graças ao socket assíncrono que utiliza e não espalha processos como o Apache faz. Somente isso é capaz de fazer com que o Nginx dê conta de milhares de requisições simultâneas.</p>
+<h1 id="4-Modularidade"><a href="#4-Modularidade" class="headerlink" title="4 - Modularidade"></a>4 - Modularidade</h1><p>Aqui o Apache dá um banho no Nginx. A experiência do Apache no mercado faz com que os usuários consigam desenvolver complementos e módulos para serem carregados dinamicamente pelo servidor, bastando apenas especificar no seu arquivo de configuração que deseja utilizar os módulos e a mágica acontece.</p>
+<h1 id="5-HTTPS"><a href="#5-HTTPS" class="headerlink" title="5 - HTTPS"></a>5 - HTTPS</h1><p>Ambos possuem suporte a este protocolo de forma fácil e sem complicações, porém o <strong>Apache</strong>, por ter mais tempo no mercado e ainda dominar o mercado, possui um grande número de exemplos e de tutoriais disponíveis na internet.</p>
+<h1 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h1><p>Então mais uma vez chegamos a uma conclusão inconclusiva. Dependendo da sua experiência no mundo dos webservers,  pode fazer você escolher o servidor que já tem mais custume.<br>Porém se pretende ter escalabilidade no seu projeto, é altamente recomendado o <strong>Nginx</strong>, porque aguenta bem o tranco. Porém o Apache também pode ser utilizado de forma escalável, mas você precisaria de um pouco de experiência com este servidor web.</p>
+<p>Tente teste e descubra o que melhor se adequa a sua necessidade.</p>
+<p>Ficamos por aqui e até breve!!!!</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/webserver/"># webserver</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/09/migrando-sessao/">Migrando sessão, do tomcat para o Redis!</a>
+            
+            
+            <a class="next" rel="next" href="/2016/12/25/hello-world/">Hello World</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

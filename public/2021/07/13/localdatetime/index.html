@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Datas e hora em Java? Nunca foi tão fácil! | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Datas e hora em Java? Nunca foi tão fácil!</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">13 julho 2021&nbsp;&nbsp;21:06:29</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="calendario.jpg" alt="calendario"></p>
+<h3 id="Fala-pexadas-Tudo-bom-com-voces"><a href="#Fala-pexadas-Tudo-bom-com-voces" class="headerlink" title="Fala pexadas!! Tudo bom com vocês?"></a>Fala <strong><em>pexadas</em></strong>!! Tudo bom com vocês?</h3><p>Neste artigo, vamos abordar uma das novas <em>features</em> trazidas pelo Java 8 (a um bom tempo atrás), mas que alguns desenvolvedores ainda utilizam equivocadamente, ou não conhecem bem o seu funcionamento. Estou falando da api de datas do Java, o <strong>LocalDate</strong> e <strong>LocalDateTime</strong>.</p>
+<h2 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h2><p>No passado, se algum programador Java precisasse utilizar alguma biblioteca para trabalhar com data ou data/hora, com certeza teria dúvidas em escolher a biblioteca que utilizaria. Isso acontecia, porque cada programador adotava sua biblioteca e utilizava da melhor forma que sabia. Dentre as mais conhecidas estão <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/util/Calendar.html">Calendar</a>, uma subclasse de Calendar chamada <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/util/GregorianCalendar.html">GregorianCalendar</a>, <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/util/Date.html">Date</a> ou até mesmo usando o próprio <em>timestamp</em> (<code>System.currentTimeInMilis()</code>) para fazer as contas malucas e representar as datas de um jeito artesanal.<br>E em meio a estas alternativas, ainda tinha o <a target="_blank" rel="noopener" href="https://www.joda.org/joda-time/index.html">Joda-Time</a>, que virou a biblioteca padrão do Java na versão 8 e será o nosso foco aqui.</p>
+<p>De fato usar o <code>System.currentTimeInMilis()</code> é muito eficiente, pois ele não cria um objeto que necessite a utilização de um <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">GC</a> para liberar essa memória, mas mesmo sendo muito eficiente, não me parece ser uma boa ideia guardar datas como sendo um <em>timestamp</em> se essas datas precisem de uma conversão todas as vezes que houvesse uma necessidade de exibição em alto nível da data. Sendo assim, as bibliotecas para esses casos são mais utilizadas.<br>Sem mais delongas, vamos ao que interessa. Demonstrar a utilização da biblioteca padrão do Java.</p>
+<h2 id="Representando-datas-com-LocalDate"><a href="#Representando-datas-com-LocalDate" class="headerlink" title="Representando datas com LocalDate"></a>Representando datas com LocalDate</h2><p>Vamos ver um exemplo simples para gerar uma variável com a data de hoje.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDate hoje = LocalDate.now();</span><br><span class="line">System.out.println(hoje); // 2021-07-13 [no dia em que escrevo]</span><br></pre></td></tr></table></figure>
+<p>Caso eu precise gerar uma data específica eu posso usar o seguinte método:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDate dia = LocalDate.of(2021, 2, 20);</span><br><span class="line">System.out.println(dia); // 2021-02-20</span><br></pre></td></tr></table></figure>
+<p>E o que acontece se eu colocar uma data que não existe por exemplo?</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LocalDate dia = LocalDate.of(2021, 2, 30); // DateTimeException</span><br></pre></td></tr></table></figure>
+<p>Aqui, uma exceção do tipo <em>DateTimeException</em> será lançada. Essa data é, de fato, inválida. Essa verificação precisa ficar por conta do programador, pois o compilador não irá reclamar dessa sintaxe e esse erro só ocorrerá em tempo de execução.<br>Alguns métodos auxiliares são bastante úteis. Como por exemplo:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LocalDate hoje = LocalDate.now(); // Data atual 2021-07-13</span><br><span class="line">hoje.getDayOfWeek().equals(DayOfWeek.FRIDAY); // false OH, NO!! </span><br><span class="line">LocalDate ontem = hoje.minusDays(1); // Diminui 1 dia</span><br><span class="line">LocalDate amanha = hoje.plusDays(1);  // Soma 1 dia</span><br><span class="line">LocalDate mesPassado = hoje.minusMonths(1); // Dimiui 1 mês</span><br><span class="line">LocalDate mesQueVem = hoje.plusMonths(1); // Soma 1 mês</span><br><span class="line">LocalDate semanaPassada = hoje.minusWeeks(1); // Diminui 7 dias</span><br><span class="line">LocalDate semanaQueVem = hoje.plusWeeks(1); // Soma 7 dias</span><br><span class="line">LocalDate anoPassado = hoje.minusYears(1); // Diminui 1 ano na data | 2020-07-13</span><br><span class="line">LocalDate anoQueVem = hoje.plusYears(1); // Soma 1 ano na data | 2022-07-13</span><br><span class="line">System.out.println(hoje.isLeapYear()); // false - Mostra se o ano é bisexto</span><br></pre></td></tr></table></figure>
+<p>Uma curiosidade é que o <em>LocalDate</em> não possui métodos para trabalhar com hora, minuto, segundo, etc. Isso fica por conta da classe LocalDateTime que veremos depois.<br>Agora vejamos uma coisa que precisamos nos atentar quando usamos <em>LocalDate</em>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public LocalDate semFimDeSemana(LocalDate dia) &#123;</span><br><span class="line">    while(dia.getDayOfWeek().equals(DayOfWeek.FRIDAY) || </span><br><span class="line">          dia.getDayOfWeek().equals(DayOfWeek.SATURDAY) || </span><br><span class="line">          dia.getDayOfWeek().equals(DayOfWeek.SUNDAY)) &#123;</span><br><span class="line">        dia.plusDays(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return dia;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>O código acima, foi encontrado em um dos sistemas em que trabalho atualmente, e dando uma olhada na condição do <code>while</code>, sabemos que, o que o programador desejava, era que uma data não poderia ser sexta-feira, sábado ou domingo. Mas na verdade esse código produz um loop infinito por um simples erro de entendimento da classe LocalDate. <code>OS OBJETOS SÃO IMUTÁVEIS</code>.<br>A linha 5 do código, indica que eu estou adicionando um dia na data passada como parâmetro, mas o que de fato acontece, é que <code>dia.plusDay(1)</code> returna um LocalDate que precisa ser atribuído a uma variável, mas, na verdade, o valor adicionado está perdido. Vejamos como seria o código correto:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public LocalDate semFimDeSemana(LocalDate dia) &#123;</span><br><span class="line">    while(dia.getDayOfWeek().equals(DayOfWeek.FRIDAY) || </span><br><span class="line">          dia.getDayOfWeek().equals(DayOfWeek.SATURDAY) || </span><br><span class="line">          dia.getDayOfWeek().equals(DayOfWeek.SUNDAY)) &#123;</span><br><span class="line">        dia = dia.plusDays(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return dia;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Toda utilização de um método auxiliar de LocalDate, produz um novo objeto LocalDate sem modificar o objeto original. Um detalhe simples que passou batido no <em>code review</em> e nos cenários dos testes unitários que causou algumas horas de análise para identificar o problema.</p>
+<h2 id="Representando-data-com-LocalDateTime"><a href="#Representando-data-com-LocalDateTime" class="headerlink" title="Representando data com LocalDateTime"></a>Representando data com LocalDateTime</h2><p>LocalDateTime possui os mesmos conceitos do LocalDateTime, mas incluindo métodos auxiliares para trabalhar com hora, minuto, segundo, etc.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime hoje = LocalDateTime.now() // 2021-07-13T21:47:51.047569 no momento em que escrevo;</span><br></pre></td></tr></table></figure>
+<p>Note que uma letra ‘T’ é utilizada para separar a data da hora, sendo esse o padrão utilizado pelos navegadores atuais usando o <a target="_blank" rel="noopener" href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_datetime-local">html</a>. Além dos métodos auxiliares mostrados para o LocalDate o LocalDateTime possui os seguintes métodos auxiliares:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime agora = LocalDateTime.now(); // 2021-07-13T21:47:51.047569</span><br><span class="line">LocalDateTime horaPassada = agora.minusHours(1); // 2021-07-13T20:47:51.047569</span><br><span class="line">LocalDateTime proximaHora = agora.plusHours(1); // 2021-07-13T22:47:51.047569</span><br><span class="line">LocalDateTime minutoPassado = agora.minusMinutes(1); // 2021-07-13T21:46:51.047569</span><br><span class="line">LocalDateTime proximoMinuto = agora.plusMinutes(1); // 2021-07-13T21:48:51.047569</span><br><span class="line">LocalDateTime segundoPassado = agora.minusSeconds(1); // 2021-07-13T21:47:50.047569</span><br><span class="line">LocalDateTime ProximoSegundo = agora.plusSeconds(1); // 2021-07-13T21:47:52.047569</span><br><span class="line">LocalDateTime nanoSegundoPassado = agora.minusNanos(1); // 2021-07-13T21:47:51.047568</span><br><span class="line">LocalDateTime proximoNanoSegundo = agora.plusNanos(1); // 2021-07-13T21:47:51.047570</span><br></pre></td></tr></table></figure>
+<p>O mesmo que foi falado para a classe LocalDate, serve para o LocalDateTime, os objetos são imutáveis.</p>
+<h2 id="Comparacao-entre-datas"><a href="#Comparacao-entre-datas" class="headerlink" title="Comparação entre datas"></a>Comparação entre datas</h2><p>Para comparação entre datas as duas classes tem métodos semelhantes:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime agora = LocalDateTime.now();</span><br><span class="line">LocalDateTime horaPassada = agora.minusHours(1);</span><br><span class="line">System.out.println(agora.isAfter(horaPassada)); // true</span><br><span class="line">System.out.println(agora.isBefore(horaPassada)); // false</span><br><span class="line">System.out.println(agora.isBefore(agora)); // false</span><br><span class="line">System.out.println(agora.isBefore(agora)); // false</span><br><span class="line">System.out.println(agora.isEqual(agora)); // true</span><br></pre></td></tr></table></figure>
+<p>As mesmas assinaturas dos métodos existentes em LocalDateTime estão presentes em LocalDate, somente mudando o tipo do parâmetro de LocalDateTime para LocalDate.</p>
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Existem ainda vários outros métodos, como por exemplo conversão de LocalDate para LocalDateTime e vice-versa. Mas o que foi apresentado neste artigo é suficiente para te tirar de qualquer <em>perrengue</em> que você possa passar na utilização de datas em Java. Não sei se algum dia você já precisou usar alguma api de datas em Java no passado, mas hoje está muito mais simplificado.</p>
+<p>Espero que tenham gostado e até a próxima <strong><em>pexadas</em></strong>!</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/desenvolvimento/"># desenvolvimento</a>
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/27/otimizandoCep/">Otimizando trabalho com CEPs</a>
+            
+            
+            <a class="next" rel="next" href="/2021/07/04/springPathTraversal/">Security flaw on Spring Boot upload.</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>

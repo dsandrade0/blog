@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Migrando sessão, do tomcat para o Redis! | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Migrando sessão, do tomcat para o Redis!</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">9 maio 2021&nbsp;&nbsp;22:02:24</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="TL-DR-Migrando-sessao-Do-Tomcat-para-o-Redis"><a href="#TL-DR-Migrando-sessao-Do-Tomcat-para-o-Redis" class="headerlink" title="TL;DR - Migrando sessão! Do Tomcat para o Redis"></a>TL;DR - Migrando sessão! Do Tomcat para o Redis</h1><p>Fala galera! Mais uma vez por aqui para compartilhar mais um problema que passei recentemente!</p>
+<h2 id="1-Introducao"><a href="#1-Introducao" class="headerlink" title="1 - Introdução"></a>1 - Introdução</h2><p>Ultimamente, escalabilidade tem sido uma das grandes buscas pelos arquitetos de software, para garantir a disponibilidade e até mesmo para ter respostas mais rápidas dos sistemas.</p>
+<p>Sendo assim, recebi uma missão. Pensar em uma forma de escalar um sistema que era “stateful”, ou seja, a sessão do usuário fica armazenada dentro do container da aplicação. Uma vez logado no sistema, um simples reboot do mesmo faria com que o usuário perdesse sua sessão! O que impede que a aplicação seja escalada, porque quando um usuário faz login em uma instância da aplicação, a outra não conhece a sessão desse usuário.</p>
+<p>O tomcat possue uma solução de replicação de sessão nativo, mas ainda não resolveria um segundo problema que seria o scale up, ou seja, o aumento de mais servidor sem necessidade de mais configurações.</p>
+<p>Outra questão é, aplicações stateful, são mais complicadas para serem conteinerizada, ou seja, usar os tão famosos containers do Docker ou algo semelhante.</p>
+<p>Sendo assim, uma solução prática para remover a sessão do usuário de dentro do tomcat, é utilizar o Redis como nosso armazenador de sessões ao invés de deixar esse controle no tomcat.</p>
+<hr>
+<h2 id="2-O-que-vamos-utilizar"><a href="#2-O-que-vamos-utilizar" class="headerlink" title="2 - O que vamos utilizar"></a>2 - O que vamos utilizar</h2><ul>
+<li>Tomcat versão 9.x</li>
+<li>Redis 2.x</li>
+<li>Para facilitar nosso trabalho, usaremos o Docker para subir uma instância do Redis.</li>
+</ul>
+<hr>
+<h2 id="3-O-passo-a-passo"><a href="#3-O-passo-a-passo" class="headerlink" title="3 - O passo a passo"></a>3 - O passo a passo</h2><p><strong>1° passo</strong>: O primeiro passo é garantir que todos os lugares que usam a sessão dentro da aplicação,<br>utilizem a sessão do HttpServletRequest do Java EE. Então todos os armazenamentos precisam ser do tipo<br><strong>request.getSession().setAttribute(“key”, value)</strong>. Por mais natural que isso possa parecer, alguns frameworks,<br>como Struts 2 por exemplo, possuem uma sessão isolada dentro do framework. No caso do Struts pode ser armazenada fazendo <strong>ActionContext.getContext().put(“key”, value)</strong>.</p>
+<p><strong>2° passo</strong>: Precisamos subir uma instância do Redis usando o docker. Para isso, com o docker instalado,<br>abra um terminal (cmd, bash…) e digite o seguinte comando:<br><code>docker run -d — name redis -p 6379:6379 redis</code></p>
+<p>Não entraremos em detalhes nos comandos do docker, mas saiba que isso irá criar para nós um banco redis utilizando a porta 6379 da nossa máquina local.</p>
+<p><strong>3° passo</strong>: Agora precisamos configurar o tomcat para registrar nossas sessões no redis. Vá até o arquivo tomcat/conf/context.xml e adicione o seguinte trecho de código.<br><img src="https://miro.medium.com/max/1400/1*3sljfHyOl3Ta42FSNbsUCQ.png" alt="tomcat/conf/context.xml"></p>
+<p>Vamos explicar algumas coisas aqui:<br><strong>configPath</strong>: local onde o arquivo redisson.yml está localizado<br><strong>readMode</strong>: modo de leitura dos atributos da sessão. Seus valores são <strong>MEMORY</strong> (atributos salvos no Redis e no Tomcat) | <strong>REDIS</strong> (atributos salvos somente no Redis)<br><strong>updateMode</strong>: modo de atualização dos atributos. Seus valores são <strong>DEFAULT</strong> (os atributos só serão salvos no redis, quando usado o Session.setAttribute) | <strong>AFTER_REQUEST</strong> (todos os atributos serão salvos no Redis após cada requisição)<br><strong>keyPrefix</strong>: insere um prefixo na frente de cada chave salva no Redis<br><strong>broadcastSessionEvents</strong>: se true vai disparar um evento broadcast para todas as instâncias do tomcat e todas os HttpSessionListeners serão disparados para os eventos de sessionCreated e sessionDestoyed.</p>
+<hr>
+<p><strong>4º passo</strong>: Precisamos definir o arquivo redisson.yml. Nele iremos declarar somente o endereço do servidor Redis conforme imagem abaixo.<br><img src="https://miro.medium.com/max/1168/1*_v_3TU6xNumtj84D9WV_pg.png" alt="redisson.yml"><br>No endereço inserido no arquivo <strong>redisson.yml</strong>, eu deixei o ip fixo somente para teste. O ideal é que você use o service discovery do docker. Para mais configurações desse arquivo consulte esse <a target="_blank" rel="noopener" href="https://github.com/redisson/redisson/wiki/2.-Configuration">link</a>.</p>
+<hr>
+<p><strong>5º passo</strong>: Precisamos inserir as bibliotecas necessárias para a serialização por parte do Redis dentro do nosso Tomcat. São elas a <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.redisson/redisson">redisson-all</a> e a <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.redisson/redisson-tomcat-9">redisson-tomcat-9</a>. A recomendação é que essas bibliotecas estejam dentro do nosso tomcat/lib.</p>
+<hr>
+<h2 id="4-—-Conclusao"><a href="#4-—-Conclusao" class="headerlink" title="4 — Conclusão"></a>4 — Conclusão</h2><p>Seguido esses passos, e tomando os devidos cuidados, seu sistema está pronto para ser inserido dentro de um container (no caso do docker) e preparado para que um login feito em um dos containers, funcione no outro sem a necessidade de maiores dores de cabeça.</p>
+<p>Eu vou ficando por aqui. Deixe seu comentário com críticas, elogios e sugestões. Valeu <strong><em>pexadas</em></strong>.</p>
+
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/devops/"># devops</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/10/criando-projeto-spring-boot-e-react/">Criando um projeto com Spring Boot e React</a>
+            
+            
+            <a class="next" rel="next" href="/2016/12/25/Nginx-x-Apache/">Nginx ou Apache??</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2022</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>
