@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'npm'
+    args: ["install"]
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'npm'
+    args: [ "run", "build" ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["build", "-t", "us-central1-docker.pkg.dev/svc-79/images/blog-frontend", "."]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["push", "us-central1-docker.pkg.dev/svc-79/images/blog-frontend"]
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'rollout'
+      - 'restart'
+      - 'deployment/blog'
+      - '--namespace'
+      - 'blog'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=apps-dev'
