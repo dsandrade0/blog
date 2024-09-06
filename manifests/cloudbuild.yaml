@@ -9,7 +9,7 @@ steps:
       - 'restart'
       - 'deployment/blog'
       - '--namespace'
-      - 'blog'
+      - 'prd-blog'
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=apps-dev'
