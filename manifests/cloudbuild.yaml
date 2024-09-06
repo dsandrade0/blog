@@ -7,7 +7,7 @@ steps:
     args:
       - 'rollout'
       - 'restart'
-      - 'deployment/blog'
+      - 'deployment/blog-frontend'
       - '--namespace'
       - 'prd-blog'
     env:
