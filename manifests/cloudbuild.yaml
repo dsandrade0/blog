@@ -5,6 +5,16 @@ steps:
     args: ["push", "us-central1-docker.pkg.dev/svc-79/images/blog-frontend"]
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
+      - 'apply'
+      - '-f'
+      - 'manifests/blog.yaml'
+      - '--namespace'
+      - 'prd-blog'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=apps-prd'
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
       - 'rollout'
       - 'restart'
       - 'deployment/blog-frontend'
@@ -12,4 +22,4 @@ steps:
       - 'prd-blog'
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=apps-dev'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=apps-prd'
