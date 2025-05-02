@@ -1,4 +1,5 @@
-
+options:
+  logging: CLOUD_LOGGING_ONLY
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ["build", "-t", "us-central1-docker.pkg.dev/svc-79/images/blog-frontend", "."]
@@ -24,5 +25,3 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=apps-prd'
-
-logsBucket: gs://814312266533.cloudbuild-logs.googleusercontent.com
