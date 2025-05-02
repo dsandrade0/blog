@@ -25,5 +25,4 @@ steps:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=apps-prd'
 
-options:
-  logging: NONE
+logsBucket: gs://814312266533.cloudbuild-logs.googleusercontent.com
