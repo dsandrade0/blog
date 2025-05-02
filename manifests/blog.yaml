@@ -8,10 +8,13 @@ kind: Ingress
 metadata:
   name: blog-frontend
   namespace: prd-blog
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+    kubernetes.io/ingress.class: traefik
 #  annotations:
 #    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
   - hosts:
     - dsandrade.info
