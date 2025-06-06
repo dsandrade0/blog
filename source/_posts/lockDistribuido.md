@@ -28,7 +28,7 @@ Em sistemas distribuídos, onde várias instâncias de uma aplicação estão ex
 O caso real onde precisei implementar essa solução não posso revelar, mas podemos criar um problema parecido que resolve da mesma forma.
 
 ### 📝 Caso hipotético
-Vamos supor então, que estamos criando um sistema para controlar as reservas de corretores de imóveis em uma imobiliária. Cada corretor pode reservar uma unidade por um período de tempo até que a reserva "caia" sozinha, ou que ele mesmo remova sua reserva. Uma vez a unidade reservada por um corretor, o outro não pode reservar a mesma unidade. Vamos definir que o corretor tem um prazo de 2 horas até que a sua reserva "caia" por falta de inatividade.
+Vamos supor então, que estamos criando um sistema para controlar as reservas de corretores de imóveis em uma imobiliária. Cada corretor pode reservar uma unidade por um período de tempo até que a reserva "caia" sozinha, ou que ele mesmo remova sua reserva. Uma vez a unidade reservada por um corretor, o outro não pode reservar a mesma unidade. Vamos definir que o corretor tem um prazo de 2 horas até que a sua reserva "caia" por falta de atividade.
 
 Com o problema descriminado, agora precisamos de fato fazer uma implementação dessa solução
 
