@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br,en,default">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Diego Andrade">
+
+
+    <meta name="subtitle" content="Site pessoal de Diego Andrade">
+
+
+    <meta name="description" content="Site com minhas experiencias pessoais">
+
+
+    <meta name="keywords" content="programming, computer Science">
+
+
+<title>Lock distribuído! Como fazer? | dsandrade</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/google.js"></script>
+    
+    <script src="/js/init.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Diego Andrade Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Diego Andrade Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Artigos/Experiências</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLELQ692G1"></script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Lock distribuído! Como fazer?</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Diego Andrade</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">6 junho 2025&nbsp;&nbsp;15:04:21</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="lock-logo.png" alt="lock.png"></p>
+<h1 id="Fala-pexadas-Tudo-bom-com-voces"><a href="#Fala-pexadas-Tudo-bom-com-voces" class="headerlink" title="Fala pexadas!! Tudo bom com vocês?"></a>Fala <strong><em>pexadas</em></strong>!! Tudo bom com vocês?</h1><p>Recentemente, um amigo pessoal escreveu um <a target="_blank" rel="noopener" href="https://www.linkedin.com/posts/felipeoc_weekend-rust-excursion-implementing-a-semaphore-activity-7335310959206354944-p05K">artigo no Linkedin</a> mostranddo uma implementação de um semáforo em Rust. Fiquei pensando por um tempo e lembrei que muitas vezes temos um problema em que um semáforo seria uma solução, porém poucas pessoas entendem como funciona e muito menos como implementa.</p>
+<p>Então decidi escrever este artigo trazendo um caso real e como faríamos para implementar um semáforo num cenário de microserviços.</p>
+<h2 id="O-que-e-um-Lock-Distribuido-e-Como-Funciona"><a href="#O-que-e-um-Lock-Distribuido-e-Como-Funciona" class="headerlink" title="O que é um Lock Distribuído e Como Funciona?"></a>O que é um Lock Distribuído e Como Funciona?</h2><p>Em sistemas distribuídos, onde várias instâncias de uma aplicação estão executando simultaneamente, pode ser necessário garantir que apenas uma delas acesse ou modifique um recurso compartilhado por vez. É aqui que entra o conceito de <strong>lock distribuído</strong>.</p>
+<h3 id="🔐-O-Que-e-um-Lock-Distribuido"><a href="#🔐-O-Que-e-um-Lock-Distribuido" class="headerlink" title="🔐 O Que é um Lock Distribuído?"></a>🔐 O Que é um Lock Distribuído?</h3><p>É um mecanismo de sincronização que permite que diferentes processos ou nós (em servidores diferentes) garantam acesso exclusivo a um recurso compartilhado, evitando conflitos e concorrência descontrolada.</p>
+<h3 id="✅-Caracteristicas-de-um-Lock-Distribuido"><a href="#✅-Caracteristicas-de-um-Lock-Distribuido" class="headerlink" title="✅ Características de um Lock Distribuído"></a>✅ Características de um Lock Distribuído</h3><ul>
+<li><strong>Exclusão mútua</strong>: Apenas um cliente detém o lock.</li>
+<li><strong>Segurança contra bloqueios</strong>: O lock ter um tempo de expiração para evitar que ele fique travado para sempre se algum processo falhar.</li>
+<li><strong>Prioridade de fila</strong>: Pode ser implementado para garantir que quem chega primeiro tem prioridade, embora nem todo sistema adote isso.</li>
+</ul>
+<h2 id="⚠️-O-Problema"><a href="#⚠️-O-Problema" class="headerlink" title="⚠️ O Problema"></a>⚠️ O Problema</h2><p>O caso real onde precisei implementar essa solução não posso revelar, mas podemos criar um problema parecido que resolve da mesma forma.</p>
+<h3 id="📝-Caso-hipotetico"><a href="#📝-Caso-hipotetico" class="headerlink" title="📝 Caso hipotético"></a>📝 Caso hipotético</h3><p>Vamos supor então, que estamos criando um sistema para controlar as reservas de corretores de imóveis em uma imobiliária. Cada corretor pode reservar uma unidade por um período de tempo até que a reserva “caia” sozinha, ou que ele mesmo remova sua reserva. Uma vez a unidade reservada por um corretor, o outro não pode reservar a mesma unidade. Vamos definir que o corretor tem um prazo de 2 horas até que a sua reserva “caia” por falta de inatividade.</p>
+<p>Com o problema descriminado, agora precisamos de fato fazer uma implementação dessa solução</p>
+<h2 id="Implementacao"><a href="#Implementacao" class="headerlink" title="Implementação"></a>Implementação</h2><p>Para essa implementação vamos usar uma stack com Java, Spring Boot, Redis e Lua.<br>A primeira coisa que precisamos fazer dois endpoints, um que irá fazer o bloqueio do recurso e o seguindo que fará a liberação do recurso.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReservaController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReservaService reservaService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/lock&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reservar</span><span class="params">(<span class="meta">@RequestBody</span> ReservaCmd cmd)</span> &#123;</span><br><span class="line">        reservaService.reservar(cmd);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/release&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">release</span><span class="params">(<span class="meta">@RequestBody</span> ReservaCmd cmd)</span> &#123;</span><br><span class="line">        reservaService.liberarReserva(cmd);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A classe nomeada como <code>ReservaCmd</code> está relacionada abaixo:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">ReservaCmd</span><span class="params">(</span></span><br><span class="line"><span class="params">        String idUsuario,</span></span><br><span class="line"><span class="params">        String idImovel</span></span><br><span class="line"><span class="params">)</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Uma vez definido nosso <code>Controller</code> precisamos implementar a lógica da reserva. E na classe <code>ReservaServico</code> está base da implementação da lógica por trás do lock/relase.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReservaService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> LockService lockService;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ReservaService</span><span class="params">(LockService lockService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.lockService = lockService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reservar</span><span class="params">(ReservaCmd cmd)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            lockService.acquireLock(cmd.idImovel(), cmd.idUsuario());</span><br><span class="line">            <span class="comment">//TODO codigo de realizacao da reserva em banco de dados</span></span><br><span class="line">        &#125; <span class="keyword">catch</span>(IllegalStateException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;Não foi possível adiquirir o lock&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">liberarReserva</span><span class="params">(ReservaCmd cmd)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//TODO codigo para liberar a reserva em banco de dados</span></span><br><span class="line">            lockService.releaseLock(cmd.idImovel(), cmd.idUsuario());</span><br><span class="line">        &#125; <span class="keyword">catch</span>(IllegalStateException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;Não foi possivel liberar a reserva&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Com todo esse código feito você deve está se perguntando: Mas o que esse <code>LockService</code> faz de fato? E é ai que vamos precisar aprofundar um pouco mais os conceitos.<br>O código abaixo mostra a implementação da classe <code>LockService</code>, e vamos precisar destrinchar algumas linhas de forma explícita.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LockService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RedisTemplate&lt;String, String&gt; redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> RedisScript&lt;Boolean&gt; releaseScript = RedisScript.of(</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">ClassPathResource</span>(<span class="string">&quot;redis/scripts/lock_release.lua&quot;</span>),</span><br><span class="line">            Boolean.class</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LockService</span><span class="params">(RedisTemplate&lt;String, String&gt; redisTemplate)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.redisTemplate = redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PREFIXO_LOCK</span> <span class="operator">=</span> <span class="string">&quot;LOCK-RESERVA::&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Duration</span> <span class="variable">DURACAO_LOCK</span> <span class="operator">=</span> Duration.of(<span class="number">2</span>, ChronoUnit.HOURS);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">acquireLock</span><span class="params">(String idImovel, String idUsuario)</span> &#123;</span><br><span class="line">        <span class="type">Boolean</span> <span class="variable">realizouLock</span> <span class="operator">=</span> redisTemplate</span><br><span class="line">                .opsForValue()</span><br><span class="line">                .setIfAbsent(PREFIXO_LOCK + idImovel, idUsuario, DURACAO_LOCK);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Boolean.FALSE.equals(realizouLock)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;Recurso bloqueado&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">releaseLock</span><span class="params">(String idImovel, String idUsuario)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Boolean</span> <span class="variable">executou</span> <span class="operator">=</span> redisTemplate.execute(</span><br><span class="line">                releaseScript,</span><br><span class="line">                List.of(PREFIXO_LOCK + idImovel),</span><br><span class="line">                idUsuario);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!executou) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;Lock não pode ser removido.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Nas linhas 5 à 8 estamos fazendo o carregamento de um script em Lua que iremos mostrar e explicar posteriormente.</li>
+<li>A linha 14 define a base da chave que será usada para armazenar no Redis.</li>
+<li>A linha 15 define o tempo que o lock ficará definido caso o dono do lock não libere. Assim a reserva “cai” por padrão quando esse tempo é atingido.</li>
+<li>A linha 17 mostra a definição da função que tenta fazer o lock de um recurso para um determinado usuário.</li>
+</ul>
+<p>A função <strong>redisTemplate.opsForValue().setIfAbsent()</strong> nas linhas 18 à 20, retorna <em><strong>True</strong></em> quando a chave não existe no redis e ele consegue incluir essa chave, e retorna <em><strong>False</strong></em> quando a chave já existe ou ele não consegue inserir a chave. O valor inserido dentro dessa chave é o id do usuário.<br>Até aqui nenhuma novidade pra quem tem familiaridade com o Redis. O negócio fica interessante na implementação do release(liberação) do lock inicial. E para explicar melhor precisamos fazer uma comparação do método junto com o script Lua que criamos.</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--lock_release.lua</span></span><br><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&quot;get&quot;</span>, KEYS[<span class="number">1</span>]) == ARGV[<span class="number">1</span>] <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> redis.call(<span class="string">&quot;del&quot;</span>, KEYS[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">releaseLock</span><span class="params">(String idImovel, String idUsuario)</span> &#123;</span><br><span class="line"></span><br><span class="line">       <span class="type">Boolean</span> <span class="variable">executou</span> <span class="operator">=</span> redisTemplate.execute(</span><br><span class="line">               releaseScript,</span><br><span class="line">               List.of(PREFIXO_LOCK + idImovel),</span><br><span class="line">               idUsuario);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (!executou) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;Lock não pode ser removido.&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>A função <code>releaseLock</code> precisa fazer 3 ações. A primeira é saber se a chave existe, a segunda é saber se o usuário que está tentando liberar esse lock é o dono do lock e a terceira é liberar o lock caso tudo esteja correto.<br>Então para isso nós iriamos precisar fazer 2 chamadas no Redis. A primeira buscando o valor da chave, com o valor na mão iriámos comparar se o valor é igual ao usuário que está tentando liberar e depois fazer uma nova chamada para o Redis deletando a chave.</p>
+<p>Com o script nós conseguimos passar essa comparação para dentro do Redis, dessa forma, uma única chamada no Redis é capaz de fazer todas as verificações necessárias para liberação, e se tudo estiver certo, apagar a chave.</p>
+<h3 id="Consideracoes"><a href="#Consideracoes" class="headerlink" title="Considerações"></a>Considerações</h3><p>Percebam que as funções <code>acquireLock</code> e <code>releaseLock</code> não retornam nada e irão estourar uma exceção caso não consiga executar a função. Todas essas implementações podem ser modificadas para retornar um booleano. Existem ainda outra variações como no exemplo abaixo.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">realizaOperacao</span><span class="params">(Cmd cmd)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">identificador</span> <span class="operator">=</span> lockService.acquireLock(cmd.id);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//TODO Realiza código que não pode ser concorrente</span></span><br><span class="line">        </span><br><span class="line">        lockService.releaseLock(cmd.id, identificador);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(IllegalStateException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;Não foi possível realizar opração&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Observem que no código acima, a função <code>acquireLock</code> devolve um identificador do bloqueio, fazendo com que esse identificador foi colocado como valor da chave, assim somente de posse desse identificador pode liberar o lock, tornando essa utilização mais contida dentro de uma mesma operação.<br>Esse tipo de utilização pode ser muito útil quando se está fazendo alteração em banco de dados NoSQL como DynamoDB por exemplo, que pode fazer com que se 2 execuções aconteçam simultaneamente, a última a terminar irá sobrescrever a operação que inicio primeiro, fazendo com que algumas alterações tenham se perdido no meio do caminho.</p>
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Esse foi um caso onde um semáforo pode ser aplicado num cenário de sistemas distribuído como temos nos dias atuais. É muito importante ter em sua mente que soluções como essa podem ser aplicadas em diversos cenários como: reservas de cinema, reservas de imóveis como sugerimos, marcação de horários em agendas…<br>Os cenários podem ser os mais variados que se possa imaginar. Usem a criatividade e soluções que sejam simples e eficazes.</p>
+<p>Os códigos usados nesse experimento estão no <a target="_blank" rel="noopener" href="https://github.com/dsandrade0/lock-distribuido">github</a>, aproveitem e façam seus experimentos.</p>
+<h2 id="Sem-mais-eu-vou-ficando-por-aqui-PEXADAS-Ate-a-proxima"><a href="#Sem-mais-eu-vou-ficando-por-aqui-PEXADAS-Ate-a-proxima" class="headerlink" title="Sem mais eu vou ficando por aqui PEXADAS. Até a próxima"></a>Sem mais eu vou ficando por aqui <strong><em>PEXADAS</em></strong>. Até a próxima</h2>
+        </div>
+
+        <section class="post-copyright">
+            <div>
+                <script src="https://utteranc.es/client.js"
+                        repo="dsandrade0/blog"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/desenvolvimento/"># desenvolvimento</a>
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/microservicos/"># microservicos</a>
+                    
+                        <a href="/tags/redis/"># redis</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/02/07/observabilidade/">Observabilidade com Spring Boot</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Diego Andrade - 2016</span>
+    </div>
+    
+        <script data-ad-client="ca-pub-0426527701612070" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</footer>
+
+    </div>
+</body>
+
+</html>
